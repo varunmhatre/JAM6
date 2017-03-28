@@ -28,7 +28,7 @@ public class MapGenerator : MonoBehaviour
 
     void Update()
     {
-        //if (Input.GetMouseButtonDown(0))
+        //if (Input.GetKeyUp(KeyCode.M))
         //{
         //    GenerateMap();
         //}
@@ -66,13 +66,11 @@ public class MapGenerator : MonoBehaviour
         MeshGenerator meshGen = GetComponent<MeshGenerator>();
         meshGen.GenerateMesh(borderedMap, 1);
 
-
-        if(PlayerPrefs.GetInt("Randomize") != 42)
-            setLocations(borderedMap);
+        setLocations(borderedMap);
 
         Map_Goal.transform.position = new Vector3(PlayerPrefs.GetInt("w1"), -5, PlayerPrefs.GetInt("h1"));
-        Map_LM1.transform.position = new Vector3(PlayerPrefs.GetInt("w2"), -5, PlayerPrefs.GetInt("h2"));
-        Map_LM2.transform.position = new Vector3(PlayerPrefs.GetInt("w3"), -5, PlayerPrefs.GetInt("h3"));
+        Map_LM1.transform.position = new Vector3(PlayerPrefs.GetInt("w2"), -4, PlayerPrefs.GetInt("h2"));
+        Map_LM2.transform.position = new Vector3(PlayerPrefs.GetInt("w3"), -4, PlayerPrefs.GetInt("h3"));
     }
 
     void setLocations(int[,] map)
@@ -98,7 +96,6 @@ public class MapGenerator : MonoBehaviour
             }
 
         } while (location_count <= 3);
-        PlayerPrefs.SetInt("Randomize",42);
     }
 
     void ProcessMap()

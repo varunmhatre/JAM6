@@ -459,6 +459,21 @@ Prefab:
       propertyPath: LM2
       value: 
       objectReference: {fileID: 1941402855}
+    - target: {fileID: 114877121851368654, guid: 878ee24baae9df14f846543898548b0f,
+        type: 2}
+      propertyPath: Map_Goal
+      value: 
+      objectReference: {fileID: 2084902520}
+    - target: {fileID: 114877121851368654, guid: 878ee24baae9df14f846543898548b0f,
+        type: 2}
+      propertyPath: Map_LM1
+      value: 
+      objectReference: {fileID: 406830665}
+    - target: {fileID: 114877121851368654, guid: 878ee24baae9df14f846543898548b0f,
+        type: 2}
+      propertyPath: Map_LM2
+      value: 
+      objectReference: {fileID: 1941402855}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 878ee24baae9df14f846543898548b0f, type: 2}
   m_IsPrefabParent: 0
@@ -634,9 +649,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce9205bafa95e7541a8e0d6bf1ad5d11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Map_Goal: {fileID: 2084902520}
-  Map_LM1: {fileID: 406830665}
-  Map_LM2: {fileID: 1941402855}
+  Map_Goal: {fileID: 0}
+  Map_LM1: {fileID: 0}
+  Map_LM2: {fileID: 0}
   width: 128
   height: 72
   seed: Parth
