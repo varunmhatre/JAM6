@@ -17,7 +17,7 @@ public class MainMenuScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            SceneManager.LoadScene("MainGame");
+            SceneManager.LoadScene("MapScene");
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {

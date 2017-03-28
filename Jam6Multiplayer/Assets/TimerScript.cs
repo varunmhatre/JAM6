@@ -17,7 +17,7 @@ public class TimerScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        timerRunning = true;
+        //timerRunning = true;
         timer = 0;
         start = DateTime.Now;
     }
@@ -37,5 +37,6 @@ public class TimerScript : MonoBehaviour
     {
         timerRunning = true;
         timer = 0;
+        start = DateTime.Now;
     }
 }

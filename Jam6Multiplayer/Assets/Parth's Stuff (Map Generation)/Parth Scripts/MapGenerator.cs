@@ -11,6 +11,7 @@ public class MapGenerator : MonoBehaviour
 
     public string seed;
     public bool useRandomSeed;
+    public bool usePassedSeed;
 
     [Range(0, 100)]
     public int randomFillPercent;
@@ -358,6 +359,10 @@ public class MapGenerator : MonoBehaviour
         if (useRandomSeed)
         {
             seed = Time.time.ToString();
+        }
+        else if (usePassedSeed)
+        {
+            seed = PlayerPrefs.GetString("seed");
         }
 
         System.Random pseudoRandom = new System.Random(seed.GetHashCode());

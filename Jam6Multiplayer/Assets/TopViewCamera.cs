@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Camera))]
 public class TopViewCamera : MonoBehaviour
@@ -25,7 +26,7 @@ public class TopViewCamera : MonoBehaviour
         scrollPosition = Vector2.zero;
 
         style = new GUIStyle();
-        style.normal.textColor = Color.white;
+        style.normal.textColor = Color.black;
         style.fontSize = 36;
 
         label1 = new GUIContent("Press p to generate image file.");
@@ -64,7 +65,7 @@ public class TopViewCamera : MonoBehaviour
         if (!fileDialog)
         {
             Vector2 size = style.CalcSize(label1);
-            Rect r = new Rect((Screen.width - size.x) * 0.5f, (Screen.height - size.y) * 0.5f, size.x, size.y);
+            Rect r = new Rect((Screen.width - size.x) * 0.5f, (Screen.height - size.y) * 0.07f, size.x, size.y);
 
             GUI.Label(r, label1, style);
         }
@@ -106,10 +107,11 @@ public class TopViewCamera : MonoBehaviour
                     }
 
                     string path = System.IO.Path.Combine(currentPath, filename);
-                    print(path);
 
                     RenderToPNG(path, 2048, 2048);
                     fileDialog = false;
+                    PlayerPrefs.SetString("seed", target.GetComponent<MapGenerator>().seed);
+                    SceneManager.LoadScene("MainGame");
                 }
                 string[] dirs = System.IO.Directory.GetDirectories(currentPath);
 
