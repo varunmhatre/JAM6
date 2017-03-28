@@ -28,10 +28,10 @@ public class MapGenerator : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.M))
-        {
-            GenerateMap();
-        }
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    GenerateMap();
+        //}
     }
 
     void GenerateMap()
