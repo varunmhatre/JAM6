@@ -5,11 +5,10 @@ using UnityEngine;
 public class GameStartScript : MonoBehaviour
 {
     private bool started = false;
-
     // Use this for initialization
     void Start()
     {
-
+        transform.position = new Vector3(PlayerPrefs.GetInt("w0"), -4, PlayerPrefs.GetInt("h0"));
     }
 
     // Update is called once per frame

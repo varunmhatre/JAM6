@@ -27,9 +27,9 @@ public class TopViewCamera : MonoBehaviour
 
         style = new GUIStyle();
         style.normal.textColor = Color.black;
-        style.fontSize = 36;
+        style.fontSize = 18;
 
-        label1 = new GUIContent("Press p to generate image file.");
+        label1 = new GUIContent("Press M to randomize map and P to generate image file.");
 
         cam = GetComponent<Camera>();
         cam.transform.rotation = Quaternion.LookRotation(Vector3.down, Vector3.up);

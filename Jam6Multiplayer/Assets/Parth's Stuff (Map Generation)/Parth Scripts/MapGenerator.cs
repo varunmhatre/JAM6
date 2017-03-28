@@ -5,9 +5,12 @@ using System;
 
 public class MapGenerator : MonoBehaviour
 {
+    public GameObject Map_Goal, Map_LM1, Map_LM2;
 
     public int width;
     public int height;
+    int borderSize = 1;
+    int location_count = 0;
 
     public string seed;
     public bool useRandomSeed;
@@ -25,7 +28,7 @@ public class MapGenerator : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyUp(KeyCode.M))
         {
             GenerateMap();
         }
@@ -43,7 +46,6 @@ public class MapGenerator : MonoBehaviour
 
         ProcessMap();
 
-        int borderSize = 1;
         int[,] borderedMap = new int[width + borderSize * 2, height + borderSize * 2];
 
         for (int x = 0; x < borderedMap.GetLength(0); x++)
@@ -63,6 +65,40 @@ public class MapGenerator : MonoBehaviour
 
         MeshGenerator meshGen = GetComponent<MeshGenerator>();
         meshGen.GenerateMesh(borderedMap, 1);
+
+
+        if(PlayerPrefs.GetInt("Randomize") != 42)
+            setLocations(borderedMap);
+
+        Map_Goal.transform.position = new Vector3(PlayerPrefs.GetInt("w1"), -5, PlayerPrefs.GetInt("h1"));
+        Map_LM1.transform.position = new Vector3(PlayerPrefs.GetInt("w2"), -5, PlayerPrefs.GetInt("h2"));
+        Map_LM2.transform.position = new Vector3(PlayerPrefs.GetInt("w3"), -5, PlayerPrefs.GetInt("h3"));
+    }
+
+    void setLocations(int[,] map)
+    {
+        int w = width + borderSize * 2;
+        int h = height + borderSize * 2;
+
+        System.Random rand_num_gen = new System.Random();
+        int rand_w;
+        int rand_h;
+        do
+        {
+            int rand_num1 = rand_num_gen.Next();
+            int rand_num2 = rand_num_gen.Next();
+            rand_w = rand_num1 % w;
+            rand_h = rand_num2 % h;
+
+            if (map[rand_w, rand_h] == 0)
+            {
+                PlayerPrefs.SetInt("w" + location_count.ToString(), rand_w - w / 2);
+                PlayerPrefs.SetInt("h" + location_count.ToString(), rand_h - h / 2);
+                location_count++;
+            }
+
+        } while (location_count <= 3);
+        PlayerPrefs.SetInt("Randomize",42);
     }
 
     void ProcessMap()
